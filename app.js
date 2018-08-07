@@ -24,7 +24,7 @@ var firstAndPike = {
       console.log(this.randPerHour)
     }
     return this.randPerHour;
-    
+
   }
 }
 firstAndPike.getAvgCookPerHour1();
@@ -37,7 +37,7 @@ for (var i = 0; i <= firstAndPike.randPerHour.length; i++) {
     totalCooks += firstAndPike.randPerHour[i]
     locationLi.textContent = hours[i] + firstAndPike.randPerHour[i] + " cookies";
     locationData.appendChild(locationLi);
-    
+
   }
   locationLi.textContent = "Total: " + totalCooks + " cookies"
   locationData.appendChild(locationLi)
