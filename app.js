@@ -2,7 +2,7 @@
 
 console.log('js loaded');
 
-var local = [firstAndPike, seaTacAirport, seattleCenter, capitolHill, alki]
+var local = ['First and Pike', 'SeaTac Airport', 'Seattle Center', 'Capitol Hill', 'Alki'];
 var hours = ["6am: ", "7am: ", "8am: ", "9am: ", "10am: ", "11am: ", "12pm: ", "1pm: ", "2pm: ", "3pm: ", "4pm: ", "5pm: ", "6pm: ", "7pm: ", "8pm: ", "Total: "];
 
 //Funtion to generate a random nuber
@@ -23,7 +23,8 @@ function getAvgCookPerHour() {
 }
 //The maximum is inclusive and the minimum is inclusive 
 
-function Locations(minCust, maxCust, avgCookSale) {
+function Locations(location, minCust, maxCust, avgCookSale) {
+  this.location = location;
   this.minCust = minCust;
   this.maxCust = maxCust;
   this.avgCookSale = avgCookSale;
@@ -34,11 +35,12 @@ Locations.prototype.getRandomIntInclusive = getRandomIntInclusive;
 Locations.prototype.getAvgCookPerHour = getAvgCookPerHour;
 // Location Objects with all related keys
 
-var firstAndPike = new Locations(23, 65, 6.3);
-var seaTacAirport = new Locations(3, 24, 1.2);
-var seattleCenter = new Locations(11, 34, 3.7);
-var capitolHill = new Locations(20, 38, 2.3);
-var alki = new Locations(2, 16, 4.6);
+var firstAndPike = new Locations(local[0], 23, 65, 6.3);
+var seaTacAirport = new Locations(local[1], 3, 24, 1.2);
+var seattleCenter = new Locations(local[2], 11, 34, 3.7);
+var capitolHill = new Locations(local[3], 20, 38, 2.3);
+var alki = new Locations(local[4], 2, 16, 4.6);
+console.log(firstAndPike);
 
 //Function to fill in custructor with actual 
 function fillTable(storeData, htmlLink) {
