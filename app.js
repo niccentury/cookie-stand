@@ -40,7 +40,7 @@ var seaTacAirport = new Locations(local[1], 3, 24, 1.2);
 var seattleCenter = new Locations(local[2], 11, 34, 3.7);
 var capitolHill = new Locations(local[3], 20, 38, 2.3);
 var alki = new Locations(local[4], 2, 16, 4.6);
-console.log(firstAndPike);
+//console.log(firstAndPike);
 
 var objectArray = [firstAndPike, seaTacAirport, seattleCenter, capitolHill, alki]
 
@@ -61,12 +61,33 @@ function fillTable(storeData) {
   dailyTotal.textContent = totalCooks;
  tableData.appendChild(dailyTotal);
 }
+var dailyTotalArray = []
+var hourlyTotalArray = []
+function StoreTotal () {
+  for (var i = 0; i <= hours.length; i++) {
+      var hoursIndex = 0;
+      if (i < hours.length) {
+          var hourlyTotal = 0;
+          for ( var i = 0 ; i < objectArray.length; i++) {
+              hourlyTotal += objectArray[i].randPerHour[hoursIndex];
+          }
+          hourlyTotalArray.push(hourlyTotal);
+      }else{
+           var allStoresDailyTotal = 0;
+            for (var i = 0; i < dailyTotalArray.length; i++) {
+              allStoresDailyTotal += dailyTotalArray[i];
+            }
+          
+          //htmlTableRow.appendChild(allStoresDailyTotal);
+      }
 
-// function totalHourly(storeTotal){
-//   for (i = 0; i < 16; i++){
-//     storeTotal.randPerHour[i]; i++
-//   }
-// }
+      hoursIndex++;
+  }
+}
+StoreTotal();
+console.log(hourlyTotalArray);
+
+
 
 //Call vars necessary to execute functions
 firstAndPike.getAvgCookPerHour();
