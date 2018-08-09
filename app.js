@@ -40,7 +40,7 @@ var seaTacAirport = new Locations(local[1], 3, 24, 1.2);
 var seattleCenter = new Locations(local[2], 11, 34, 3.7);
 var capitolHill = new Locations(local[3], 20, 38, 2.3);
 var alki = new Locations(local[4], 2, 16, 4.6);
-//console.log(firstAndPike);
+
 
 var objectArray = [firstAndPike, seaTacAirport, seattleCenter, capitolHill, alki]
 
@@ -61,6 +61,7 @@ function fillTable(storeData) {
   dailyTotal.textContent = totalCooks;
  tableData.appendChild(dailyTotal);
 }
+
 var dailyTotalArray = []
 var hourlyTotalArray = []
 function StoreTotal () {
@@ -85,7 +86,33 @@ function StoreTotal () {
 
       hoursIndex++;
   }
+
 }
+
+function createFooter(){
+  var lastRow = document.getElementById('cookieTable');
+  var totalsInRow = document.createElement('tr');
+  lastRow.appendChild(totalsInRow);
+  var totalHourlyHead = document.createElement('th');
+  totalHourlyHead.textContent = 'Totals:';
+  totalsInRow.appendChild(totalHourlyHead);
+  for (var i = 0; i <= hourlyTotalArray.length; i++){
+    var totalTd = document.createElement('td');
+    if (i === hourlyTotalArray.length) {
+      totalTd.textContent = hourlyTotalArray.reduce((a, b) => a + b, 0)
+      totalsInRow.appendChild(totalTd);
+      break;
+      }
+    totalTd.textContent = hourlyTotalArray[i];
+    totalsInRow.appendChild(totalTd);
+    }
+}
+  // if i = hourlyTotalArray.length}{
+  //   hourlyTotalArray.reduce((a, b) => a + b, 0)
+
+  
+
+//Call vars necessary to execute functions
 
 
 
@@ -102,6 +129,6 @@ fillTable(capitolHill);
 fillTable(alki);
 
 StoreTotal();
+createFooter();
 console.log(hourlyTotalArray);
 
-console.log(sum(hourlyTotalArray));
