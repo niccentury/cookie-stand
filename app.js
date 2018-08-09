@@ -2,8 +2,8 @@
 
 console.log('js loaded');
 
-var local = ['First and Pike', 'SeaTac Airport', 'Seattle Center', 'Capitol Hill', 'Alki'];
-var hours = ["6am: ", "7am: ", "8am: ", "9am: ", "10am: ", "11am: ", "12pm: ", "1pm: ", "2pm: ", "3pm: ", "4pm: ", "5pm: ", "6pm: ", "7pm: ", "8pm: ", "Total: "];
+var local = ['<th>First and Pike</th>', '<th>SeaTac Airport</th>', '<th>Seattle Center</th>', '<th>Capitol Hill', '<th>Alki</th>'];
+var hours = ["6am: ", "7am: ", "8am: ", "9am: ", "10am: ", "11am: ", "12pm: ", "1pm: ", "2pm: ", "3pm: ", "4pm: ", "5pm: ", "6pm: ", "7pm: ", "8pm: "];
 
 //Funtion to generate a random nuber
 function getRandomIntInclusive() {
@@ -42,24 +42,31 @@ var capitolHill = new Locations(local[3], 20, 38, 2.3);
 var alki = new Locations(local[4], 2, 16, 4.6);
 console.log(firstAndPike);
 
-//Function to fill in custructor with actual 
-function fillTable(storeData, htmlLink) {
-  var locationData = document.getElementById(htmlLink);
+var objectArray = [firstAndPike, seaTacAirport, seattleCenter, capitolHill, alki]
+
+//Function to fill in custructor with actuals
+function fillTable(storeData) {
+  var locationData = document.getElementById('tableCell');
   var totalCooks = 0;
+  var tableData = document.createElement('tr');
+  tableData.innerHTML = storeData.location;
+  locationData.appendChild(tableData);
   for (var i = 0; i < (storeData.randPerHour.length); i++) {
-    console.log('Hi', i, storeData.randPerHour[i]);
-    var tableData = document.createElement('td');
-    var cookData = document.createTextNode(storeData.randPerHour[i]);
+    var cookData = document.createElement('td');
+    cookData.textContent = storeData.randPerHour[i];
     tableData.appendChild(cookData);
-    locationData.appendChild(tableData);
     totalCooks += storeData.randPerHour[i];
   }
-
   var dailyTotal = document.createElement('td');
-  var finalTotal = document.createTextNode(totalCooks);
-  dailyTotal.appendChild(finalTotal);
-  locationData.appendChild(dailyTotal);
+  dailyTotal.textContent = totalCooks;
+ tableData.appendChild(dailyTotal);
 }
+
+// function totalHourly(storeTotal){
+//   for (i = 0; i < 16; i++){
+//     storeTotal.randPerHour[i]; i++
+//   }
+// }
 
 //Call vars necessary to execute functions
 firstAndPike.getAvgCookPerHour();
@@ -67,9 +74,9 @@ seaTacAirport.getAvgCookPerHour();
 seattleCenter.getAvgCookPerHour();
 capitolHill.getAvgCookPerHour();
 alki.getAvgCookPerHour();
-fillTable(firstAndPike, 'pike');
-fillTable(seaTacAirport, 'seaTac');
-fillTable(seattleCenter, 'seaCent');
-fillTable(capitolHill, 'capHill');
-fillTable(alki, 'alki');
+fillTable(firstAndPike);
+fillTable(seaTacAirport);
+fillTable(seattleCenter);
+fillTable(capitolHill);
+fillTable(alki);
 
