@@ -64,18 +64,20 @@ function fillTable(storeData) {
 var dailyTotalArray = []
 var hourlyTotalArray = []
 function StoreTotal () {
+  var hoursIndex = 0;
   for (var i = 0; i <= hours.length; i++) {
-      var hoursIndex = 0;
       if (i < hours.length) {
           var hourlyTotal = 0;
-          for ( var i = 0 ; i < objectArray.length; i++) {
-              hourlyTotal += objectArray[i].randPerHour[hoursIndex];
+          for ( var x = 0 ; x < objectArray.length; x++) {
+              hourlyTotal += objectArray[x].randPerHour[hoursIndex];
           }
-          hourlyTotalArray.push(hourlyTotal);
+          hourlyTotalArray.push(hourlyTotal); 
+          
+
       }else{
            var allStoresDailyTotal = 0;
-            for (var i = 0; i < dailyTotalArray.length; i++) {
-              allStoresDailyTotal += dailyTotalArray[i];
+            for (var x = 0; x < dailyTotalArray.length; x++) {
+              allStoresDailyTotal += dailyTotalArray[x];
             }
           
           //htmlTableRow.appendChild(allStoresDailyTotal);
@@ -84,8 +86,6 @@ function StoreTotal () {
       hoursIndex++;
   }
 }
-StoreTotal();
-console.log(hourlyTotalArray);
 
 
 
@@ -101,3 +101,7 @@ fillTable(seattleCenter);
 fillTable(capitolHill);
 fillTable(alki);
 
+StoreTotal();
+console.log(hourlyTotalArray);
+
+console.log(sum(hourlyTotalArray));
