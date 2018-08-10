@@ -66,6 +66,7 @@ var dailyTotalArray = []
 var hourlyTotalArray = []
 function StoreTotal () {
   var hoursIndex = 0;
+  hourlyTotalArray = [];
   for (var i = 0; i <= hours.length; i++) {
       if (i < hours.length) {
           var hourlyTotal = 0;
@@ -90,7 +91,7 @@ function StoreTotal () {
 }
 
 function createFooter(){
-  var lastRow = document.getElementById('cookieTable');
+  var lastRow = document.getElementById('tf');
   var totalsInRow = document.createElement('tr');
   lastRow.appendChild(totalsInRow);
   var totalHourlyHead = document.createElement('th');
@@ -132,3 +133,16 @@ StoreTotal();
 createFooter();
 console.log(hourlyTotalArray);
 
+var formData = document.getElementById('storeData');
+formData.addEventListener('submit', function(e) {
+  e.preventDefault();
+  document.getElementById("myTable").deleteRow(0);
+
+  var locationCreateFromForm = new Locations('<th>' + e.target.name.value + '</th>', Number(e.target.minimum.value), Number(e.target.maximum.value), Number(e.target.average.value));
+  locationCreateFromForm.getAvgCookPerHour();
+  objectArray.push(locationCreateFromForm);
+  StoreTotal();
+  fillTable(locationCreateFromForm);
+  createFooter();
+  console.log(locationCreateFromForm);
+});
