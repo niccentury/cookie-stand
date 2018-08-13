@@ -2,3 +2,21 @@ tr, td, th{
     padding: 10px;
     border: 1px solid black;
 }
+
+#eventBox{
+    width:400px;
+
+}
+#storeData{
+    position: relative;
+    left: 30%;
+}
+body{
+    background: url(salmon.png);
+    background-repeat: repeat;
+}
+
+tr{
+    background-color:#33CCCC;
+
+}

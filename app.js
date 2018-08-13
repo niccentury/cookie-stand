@@ -90,8 +90,9 @@ function StoreTotal () {
 
 }
 
+
 function createFooter(){
-  var lastRow = document.getElementById('tf');
+  var lastRow = document.getElementById('cookieTable').tFoot;
   var totalsInRow = document.createElement('tr');
   lastRow.appendChild(totalsInRow);
   var totalHourlyHead = document.createElement('th');
@@ -107,6 +108,21 @@ function createFooter(){
     totalTd.textContent = hourlyTotalArray[i];
     totalsInRow.appendChild(totalTd);
     }
+}
+
+function newFooter(hasFooter = false){
+  if (hasFooter ==  false) {
+    createFooter();
+  }
+  else if (hasFooter == true) {
+    document.getElementById('cookieTable').deleteTFoot();
+    var table = document.getElementById('cookieTable');
+    var footer = table.createTFoot()
+    createFooter();
+  }
+  else {
+    console.log("only accepts bool as argument");
+  }
 }
   // if i = hourlyTotalArray.length}{
   //   hourlyTotalArray.reduce((a, b) => a + b, 0)
@@ -130,19 +146,19 @@ fillTable(capitolHill);
 fillTable(alki);
 
 StoreTotal();
-createFooter();
+newFooter();
 console.log(hourlyTotalArray);
 
 var formData = document.getElementById('storeData');
 formData.addEventListener('submit', function(e) {
   e.preventDefault();
-  document.getElementById("myTable").deleteRow(0);
+  //document.getElementById("myTable").deleteRow(0);
 
   var locationCreateFromForm = new Locations('<th>' + e.target.name.value + '</th>', Number(e.target.minimum.value), Number(e.target.maximum.value), Number(e.target.average.value));
   locationCreateFromForm.getAvgCookPerHour();
   objectArray.push(locationCreateFromForm);
   StoreTotal();
   fillTable(locationCreateFromForm);
-  createFooter();
+  newFooter(true);
   console.log(locationCreateFromForm);
 });
