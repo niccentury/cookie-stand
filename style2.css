@@ -1,0 +1,47 @@
+body {
+    background-color: salmon;
+}
+
+header {
+    text-align: center;
+    border-bottom: 2px  solid black;
+}
+img.logo {
+    margin: auto;
+    display: block;
+}
+#top {
+    border-bottom: 2px solid black;
+}
+#photos {
+    padding-left: 5%;
+}
+#left {
+    float: left;
+    width: 33.3%;
+    padding-left: 5%;
+    padding-right: 5%;
+    border: 2px solid black;
+    margin-top: 5%;
+    
+    
+}
+#left h2 {
+    text-align: center;
+}
+#left ul {
+    padding-left: 25%;
+    list-style: circle;
+}
+#left h4 {
+    padding-left: 20%;
+}
+#right {
+    width: 56%;
+    margin-left: 43.3%;
+    padding: 0px 15px 0px 15px;
+    margin-top: 3%;
+}
+#right h2 {
+    text-align: center;
+}
